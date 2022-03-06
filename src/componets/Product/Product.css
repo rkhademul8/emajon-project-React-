@@ -1,0 +1,13 @@
+
+.product-info{
+    display: flex;
+    border-bottom: 1px solid gray;
+   padding: 10px;
+}
+
+.product-details button{
+    background-color: goldenrod;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 5px;
+}
