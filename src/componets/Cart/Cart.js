@@ -7,9 +7,16 @@ let total=0
     for (const product of cart) {
         total=total+product.price
     }
+    const shipping= total>0 ? 10:0
+    const tax=(total+shipping)*0.10
+    const grandTotal=total+shipping+tax
     return (
         <div>
-            <h1>Totsl:{total}</h1>
+            <h3>Total order:{cart.length}</h3>
+            <h4>Total:{total.toFixed(2)}</h4>
+            <h4>Shipping:{shipping}</h4>
+            <h4>Tax:{tax.toFixed(2)}</h4>
+            <h4>Grand Total:{grandTotal.toFixed(2)}</h4>
         </div>
     );
 };
