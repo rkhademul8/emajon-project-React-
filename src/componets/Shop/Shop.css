@@ -1,4 +1,16 @@
 
+
+.search-section{
+    text-align: center;
+    background-color: rgb(168, 159, 159);
+    line-height: 60px;
+}
+
+.search-section input{
+    width: 75%;
+    padding: 5px 0px;
+}
+
 .product-page{
     display: grid;
     grid-template-columns: 3fr 1fr;
