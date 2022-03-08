@@ -1,6 +1,6 @@
 
 
-
+// product add in localstorage
 const addTodb=id=>{
     const exists=localStorage.getItem('shopping_cart')
     let shopping_cart={}
@@ -21,5 +21,12 @@ const addTodb=id=>{
     localStorage.setItem('shopping_cart',JSON.stringify(shopping_cart))
 }
 
+//  product store in cart function
 
-export{addTodb}
+const cartStore=()=>{
+
+    const exists=localStorage.getItem('shopping_cart')
+    return exists ? JSON.parse(exists):{}
+}
+
+export{addTodb,cartStore}

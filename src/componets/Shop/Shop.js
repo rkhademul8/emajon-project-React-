@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { addTodb } from '../../utilities/Fakedb';
+import { addTodb, cartStore } from '../../utilities/Fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
-    //  load data from public
+
+    //  load data from products.JSON
     const [products, setProducts]=useState([])
     useEffect(()=>{
         fetch('./products.JSON')
@@ -15,14 +16,31 @@ const Shop = () => {
         })
     },[])
 
-    //  product button handle
 
+// store data in cart from localstorage
+
+useEffect(()=>{
+    const getCart=cartStore()
+    const storeProduct=[]
+    for (const key in getCart){
+        const selectProduct=products.find(product=>product.key===key)
+       if(selectProduct){
+           const quentity=getCart[key]
+           selectProduct.quentity=quentity
+           storeProduct.push(selectProduct)
+       }   
+    }
+
+    setCart(storeProduct)
+},[products])
+
+
+    //  product button handle
     const [cart,setCart]=useState([])
     const handleAddToCart=(product)=>{
         // console.log(product);
         const newCart=[...cart,product]
         setCart(newCart)
-        
         // product add in localstorage
         addTodb(product.key)
     }
@@ -30,7 +48,6 @@ const Shop = () => {
 
     // search handle
     const [displayProduct, setDisplayProduct]=useState([])
-
     const handleSearch=event=>{
         // console.log(event.target.value);
         const searchText=event.target.value
