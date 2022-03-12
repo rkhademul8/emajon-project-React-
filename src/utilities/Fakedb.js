@@ -21,6 +21,23 @@ const addTodb=id=>{
     localStorage.setItem('shopping_cart',JSON.stringify(shopping_cart))
 }
 
+
+// remove from localstorage
+const removeFromDb = id => {
+    const exists = localStorage.getItem('shopping_cart');
+    if (!exists) {
+  
+    }
+    else {
+      const shopping_cart = JSON.parse(exists);
+      delete shopping_cart[id];
+      localStorage.setItem('shopping_cart', JSON.stringify(shopping_cart));
+    }
+  }
+  
+
+
+
 //  product store in cart function
 
 const cartStore=()=>{
@@ -29,4 +46,4 @@ const cartStore=()=>{
     return exists ? JSON.parse(exists):{}
 }
 
-export{addTodb,cartStore}
+export{addTodb,cartStore,removeFromDb }
