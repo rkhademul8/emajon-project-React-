@@ -46,4 +46,11 @@ const cartStore=()=>{
     return exists ? JSON.parse(exists):{}
 }
 
-export{addTodb,cartStore,removeFromDb }
+//  cart clear
+
+const clearTheCart = () => {
+    localStorage.removeItem('shopping_cart');
+  }
+
+
+export{addTodb,cartStore,removeFromDb,clearTheCart }

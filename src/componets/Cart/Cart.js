@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Cart.css'
 const Cart = (props) => {
     const {cart}=props
+
  let quentity=0   
 let total=0
     for (const product of cart) {  
@@ -22,8 +23,11 @@ let total=0
             <h4>Shipping:{shipping}</h4>
             <h4>Tax:{tax.toFixed(2)}</h4>
             <h4>Grand Total:{grandTotal.toFixed(2)}</h4>
+
+            {/* children come here */}
+            {props.children}
             
-            <Link className='cart-btn' to={'/review'}>Order Now</Link>
+            
         </div>
     );
 };
